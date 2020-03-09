@@ -145,30 +145,30 @@ END APC  : 2020-03-09 13:50:14 +0000
 -----------------------------------
 Первым делом необходимо установить Docker на Ваше файловое хранилище
 
-![install docker](/images/synology-docker-apcupsd1.png)
+![install docker](https://github.com/rzolotuhin/docker-apcupsd/blob/master/images/synology-docker-apcupsd1.png)
 
 В разделе `Образ` загружаем образ apcupsd по прямой ссылке с Docker HUB `https://hub.docker.com/r/rzolotuhin/apcupsd`
 
-![add apcupsd container](/images/synology-docker-apcupsd2.png)
+![add apcupsd container](https://github.com/rzolotuhin/docker-apcupsd/blob/master/images/synology-docker-apcupsd2.png)
 
 После загрузки выбираем контейнер и жмем `Запустить` в верхнем меню. Откроется диалоговое окно, в котором можно указать желаемое имя контейнера и выставить дополнительные параметры
 
-![add apcupsd container](/images/synology-docker-apcupsd3.png)
+![add apcupsd container](https://github.com/rzolotuhin/docker-apcupsd/blob/master/images/synology-docker-apcupsd3.png)
 
 Включаем автоматический запуск контейнера
 
-![enable auto start container](/images/synology-docker-apcupsd4.png)
+![enable auto start container](https://github.com/rzolotuhin/docker-apcupsd/blob/master/images/synology-docker-apcupsd4.png)
 
 Обязательно указываем где находится файл конфигурации и куда он будет монтироваться внутри контейнера. Лично я, для файлов конфигурации различных контейнеров создал отдельную сетевую папку `docker` с ограниченным доступом. В ней содержатся подкаталоги соответствующие каждому из запущенных контейнеров, например, `/docker/apcupsd/`
 
-![add mount parameters](/images/synology-docker-apcupsd5.png)
+![add mount parameters](https://github.com/rzolotuhin/docker-apcupsd/blob/master/images/synology-docker-apcupsd5.png)
 
 Если требуется получать доступ к сетевым службам контейнера, то обязательно выбираем в разделе `Сеть` параметр `Использовать ту же сеть, что и сеть хоста Docker`. В данном случае это позволит получить доступ к `apcupsd` по фдресу сетевого хранилища и порту `3551`, по сути это простой проброс порта
 
-![settings port forwarding](/images/synology-docker-apcupsd6.png)
+![settings port forwarding](https://github.com/rzolotuhin/docker-apcupsd/blob/master/images/synology-docker-apcupsd6.png)
 
 Применяем настройки. Проверить состояния контейнера можно в разделе `Контейнер`
 
-![show running containers](/images/synology-docker-apcupsd7.png)
+![show running containers](https://github.com/rzolotuhin/docker-apcupsd/blob/master/images/synology-docker-apcupsd7.png)
 
 На этом все
