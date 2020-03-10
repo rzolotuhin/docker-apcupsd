@@ -77,7 +77,7 @@ docker run -d --name="apcupsd" -p 3551:3551 -v /srv/docker/apcupsd/apcupsd.conf:
 ```bash
 docker ps
 ```
-В выводе мы получим список запущенных контейнеров. Найдите контейнер `rzolotuhin/apcupsd` и его `CONTAINER ID`, это уникальное значение мы будем использовать для доступа к контейнеру
+В выводе мы получим список запущенных контейнеров. Найдите контейнер `rzolotuhin/apcupsd` и его `NAMES`, это уникальное значение мы будем использовать для доступа к контейнеру
 ```
 CONTAINER ID        IMAGE                COMMAND              CREATED             STATUS              PORTS                    NAMES
 e65d8bc12075        rzolotuhin/apcupsd   "/sbin/apcupsd -b"   About an hour ago   Up About an hour    0.0.0.0:3551->3551/tcp   apcupsd
