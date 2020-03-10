@@ -69,7 +69,7 @@ DATATIME 0
 
 Запустите контейнер
 ```bash
-docker run -d -p 3551:3551 -v /srv/docker/apcupsd/apcupsd.conf:/etc/apcupsd/apcupsd.conf rzolotuhin/apcupsd
+docker run -d --name="apcupsd" -p 3551:3551 -v /srv/docker/apcupsd/apcupsd.conf:/etc/apcupsd/apcupsd.conf rzolotuhin/apcupsd
 ```
 В параметрах мы указали, что из контейнера необходимо пробросить сетевой порт 3551, а также путь для монтирования файла конфигурации `apcupsd.conf` из Вашего сервера в контейнер.
 
@@ -80,11 +80,11 @@ docker ps
 В выводе мы получим список запущенных контейнеров. Найдите контейнер `rzolotuhin/apcupsd` и его `CONTAINER ID`, это уникальное значение мы будем использовать для доступа к контейнеру
 ```
 CONTAINER ID        IMAGE                COMMAND              CREATED             STATUS              PORTS                    NAMES
-e65d8bc12075        rzolotuhin/apcupsd   "/sbin/apcupsd -b"   About an hour ago   Up About an hour    0.0.0.0:3551->3551/tcp   hungry_dhawan
+e65d8bc12075        rzolotuhin/apcupsd   "/sbin/apcupsd -b"   About an hour ago   Up About an hour    0.0.0.0:3551->3551/tcp   apcupsd
 ```
-Запросим статус у `apcupsd`, напоминаю, что у Вас будет свой идентификатор, НЕ `e65d8bc12075`
+Запросим статус у `apcupsd` выполнив команду `/etc/init.d/apcupsd status` внутри контейнера с именем `apcupsd` которое мы задали при запуске через параметр `--name="apcupsd"`
 ```bash
-docker exec -i -t e65d8bc12075 /etc/init.d/apcupsd status
+docker exec -i -t apcupsd /etc/init.d/apcupsd status
 ```
 В ответ мы должны получить информацию о состоянии ИБП
 ```
